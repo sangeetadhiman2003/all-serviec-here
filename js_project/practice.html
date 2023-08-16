@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my first assignment</title>
+    <style>
+      .demo {
+        margin-top: 90px;
+        margin-right: 200px;
+        margin-left: 200px;
+        margin-bottom: 0;
+        background-color: whitesmoke;
+        width: 1100px;
+        height: 352px;
+        border: 2px solid black;
+      }
+      .pic {
+        width: 48%;
+        height: 18%;
+        float: left;
+      }
+      #btn {
+        width: 310px;
+        background-color: gray;
+        height: 30px;
+      }
+      #name {
+        width: 300px;
+      }
+      #pw {
+        width: 300px;
+      }
+      #check {
+        background-color: yellow;
+      }
+      .signIn {
+        padding-left: 30px;
+
+        float: left;
+      }
+      #sign {
+        padding-left: 70px;
+      }
+      #fp {
+        padding-left: 80px;
+      }
+      .fb {
+        float: right;
+        width: 35px;
+        height: 35px;
+        padding-right: 10px;
+        padding-top: 5px;
+      }
+      .tw {
+        float: right;
+        width: 40px;
+        height: 40px;
+        padding-right: 7px;
+        padding-top: 5px;
+      }
+      html {
+        background-color: white;
+      }
+      .welcome {
+        display: flex;
+        justify-content: center;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        background-color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="welcome">
+      <h2>Welcome To Login Page</h2>
+    </div>
+    <div class="demo">
+      <div class>
+        <div>
+          <a href="https://www.facebook.com/"
+            ><img
+              src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png"
+              class="fb"
+          /></a>
+        </div>
+        <div>
+          <a href="https://twitter.com/i/flow/login"
+            ><img
+              src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-twitter-social-media-round-icon-png-image_6315985.png"
+              class="tw"
+          /></a>
+        </div>
+      </div>
+      <div>
+        <img
+          src="https://media.istockphoto.com/id/1392167759/photo/the-robots-hand-indicates-that-the-enter-key-on-the-keyboard-of-the-labtop-computer-should-be.jpg?s=1024x1024&w=is&k=20&c=T6DnmTxTZeSyou8ovd8rzez4b1UE8G0VpWQVN1x_NLY="
+          class="pic"
+        />
+      </div>
+      <div class="signIn" id="details">
+        <h1>Sign In</h1>
+
+        <label>Username</label>
+        <br />
+        <input type="text" id="name" required />
+        <br />
+        <lable>Password</lable>
+        <br />
+        <input type="password" id="pw" required />
+        <br />
+        <br />
+        <input type="button" id="btn" value="Sign In" onclick="check()" />
+        <br />
+        <br />
+        <input
+          type="checkbox"
+          id="check"
+          value="Remember me"
+          onclick="remember()"
+        />
+        <label style="color: purple"> Remember me</label>
+        <label id="fp"
+          ><a href="forgetPass.html" style="color: black" id="fp"
+            >forgot password</a
+          ></label
+        >
+        <br />
+        <br />
+        <label id="sign"
+          >Not a member?
+          <a href="register.html" style="color: purple">Sign Up</a></label
+        >
+      </div>
+    </div>
+    <br />
+    <div>
+      <p id="result1"></p>
+      <p id="result2"></p>
+    </div>
+    <script>
+      function check() {
+        var name = document.getElementById("name");
+
+        var pw = document.getElementById("pw");
+
+        var lowerCaseLetters = /[a-z]/g;
+        var upperCaseLetters = /[A-Z]/g;
+        var numbers = /[0-9]/g;
+
+        var flag = 0;
+
+        if (name.value.length == 0) {
+          alert("Please fill in Username");
+        } else if (pw.value.length == 0) {
+          alert("Please fill in password");
+        } else if (name.value.length == 0 && pw.value.length == 0) {
+          alert("Please fill in UserName and password");
+        } else if (pw.value.length > 10) {
+          alert("Max of 10");
+        } else {
+          flag = 1;
+
+          var storedName = localStorage.getItem("name");
+
+          var storedPass = localStorage.getItem("pw");
+          if (name.value == storedName && pw.value == storedPass) {
+            alert("You are logged in.");
+          } else {
+            alert("Error on login");
+          }
+        }
+      }
+      var op = document.getElementById("fp");
+      op.onclick = changePass;
+      function changePass() {
+        var name = doument.getElementById("name");
+        var pass = doument.getElementById("name");
+        console.log(name);
+        if (name.value == localStorage.getItem("name")) {
+          localStorage.removeItem("pass");
+          alert("remove data");
+        }
+      }
+    </script>
+  </body>
+</html>
